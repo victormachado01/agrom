@@ -1,0 +1,12 @@
+{
+  "name": "agrom",
+  "displayName": "agrom",
+  "expo": {
+    "name": "agrom",
+    "slug": "agrom",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
