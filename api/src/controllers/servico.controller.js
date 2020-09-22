@@ -43,17 +43,18 @@ module.exports = {
                 return res.status(400).send({ errors: error.details });
             }
 
-            // Utilizar multer
-            const imgs = [
-                { path: '/home/davi/Pictures/agrom_v1.png' },
-                { path: '/home/davi/Pictures/agrom_v2.png' },
-            ];
-            
+            const imgs = req.files;
+
             if (!imgs.length) {
                 return res.status(400).send({ error: "Obrigatório pelo menos uma imagem" });
             } else if (imgs.length > 6) {
                 return res.status(400).send({ error: "Máximo de 6 imagens" });
             }
+
+            const extensaoInvalida = imgs.filter(img => !img.mimetype.startsWith('image/'));
+
+            if (extensaoInvalida.length)
+                return res.status(400).send({ error: "Permitido somente imagens" });
 
             value.IDUsuario = 1;
 
