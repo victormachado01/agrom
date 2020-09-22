@@ -4,6 +4,7 @@
 ### 
 
 GET {{api}}
+Accept: application/json
 
 
 ###
