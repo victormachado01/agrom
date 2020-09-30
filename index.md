@@ -1,37 +1,36 @@
-## Welcome to GitHub Pages
+# Bem vindo(a) ao AgroM
 
-You can use the [editor on GitHub](https://github.com/victormachado01/agrom/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+## O que somos?
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+O AgroM é um Marketplace de **serviços agrícolas**. Esperamos atingir todo o agronegócio, facilitando o acesso à busca por serviços de terceiros através de nossa plataforma.
 
-### Markdown
+### Facilidade
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Feito de forma **simples** para **simplificar** seu trabalho.
 
 ```markdown
-Syntax highlighted code block
+Nossas features:
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+- Cadastro na plataforma
+- Busca por serviços
+- Publicação de serviços
+- Facilitação no contato
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+For more details see [GitHub AgroM](https://github.com/victormachado01/agrom).
 
-### Jekyll Themes
+**Página inicial:** Buscamos encontrar uma interface simples e intuitiva, exibindo apenas os serviços fornecidos por terceiros na aplicação, garantindo que o usuario não tenha disterações durante o uso
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/victormachado01/agrom/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+<img src="./assets/home.png">
 
-### Support or Contact
+### Publicação expandida
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Ao clicar em uma publicação, você pode exibir mais detalhes sobre a mesma, como descrição do serviço, valores, localidade e telefone para contato.
+
+<img src="./assets/pub.png">
+
+### Publique seu próprio serviço!
+
+Com o preenchimento de um formulario simples e intuitivo, você pode em poucos segundos adicionar as fotos do seu serviço, descrição, valores e todos as outras informações necessárias para que os outros possam contactar você.
+
+<img src="./assets/addpub.png">
