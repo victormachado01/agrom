@@ -1,10 +1,14 @@
 # Bem vindo(a) ao AgroM
 
+### Seu Marketplace Agro!
+
 ## O que somos?
 
-O AgroM é um Marketplace de **serviços agrícolas**. Esperamos atingir todo o agronegócio, facilitando o acesso à busca por serviços de terceiros através de nossa plataforma.
+O AgroM é um Marketplace de **serviços agrícolas**. Esperamos atingir todo o agronegócio, **facilitando o acesso à busca por serviços** de terceiros através de nossa plataforma.
 
-### Facilidade
+## Nosso código fonte: [GitHub AgroM](https://github.com/victormachado01/agrom).
+
+## Facilidade
 
 Feito de forma **simples** para **simplificar** seu trabalho.
 
@@ -16,8 +20,6 @@ Nossas features:
 - Publicação de serviços
 - Facilitação no contato
 ```
-
-For more details see [GitHub AgroM](https://github.com/victormachado01/agrom).
 
 **Página inicial:** Buscamos encontrar uma interface simples e intuitiva, exibindo apenas os serviços fornecidos por terceiros na aplicação, garantindo que o usuario não tenha disterações durante o uso
 
