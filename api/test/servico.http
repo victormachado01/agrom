@@ -1,15 +1,16 @@
 @api = http://localhost:8080/api/v1/servicos
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRFVzdWFyaW8iOjQsIm5vbWUiOiJndWlzIiwiZW1haWwiOiJndWlAZ21haWwuY29tIiwiaWF0IjoxNjAyNTExNjEzLCJleHAiOjE2MDI3NzA4MTN9._l54dZuFJuqH__v70lOqYRYw_H0-qxi-3y-7sMRj0_A
 
 
-### 
-
-GET {{api}}
+GET {{api}}?page=0
 Accept: application/json
+Authorization: Bearer {{token}}
 
 
 ###
 
 POST {{api}} HTTP/1.1
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {

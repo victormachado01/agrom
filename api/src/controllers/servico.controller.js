@@ -56,7 +56,7 @@ module.exports = {
             if (extensaoInvalida.length)
                 return res.status(400).send({ error: "Permitido somente imagens" });
 
-            value.IDUsuario = 1;
+            value.IDUsuario = req.user.IDUsuario;
 
             const servico = await ServicoService.cadastro(value, imgs);
 
@@ -69,10 +69,11 @@ module.exports = {
     listar: async (req, res, next) => {
         try {
             const page = parseInt(req.query.page) || 0;
+            const limit = 25;
 
-            const servicos = await ServicoService.listar(page);
+            const servicos = await ServicoService.listar(page, limit);
 
-            return res.status(200).send({ servicos: servicos.results, total: servicos.total });
+            return res.status(200).send({ servicos: servicos.results, total: servicos.total, page, limit });
         } catch (error) {
             console.error(error);
             return res.status(500).send({ error: "Erro ao listar serviços" });
