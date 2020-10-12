@@ -67,4 +67,26 @@ module.exports = {
       return res.status(500).send({ error: "Erro ao cadastrar usuário" });
     }
   },
+  atualizar: async (req, res, next) => {
+    try {
+      const schema = Joi.object({
+        nome: Joi.string().min(3).max(200).trim().required(),
+        telefone: Joi.string().min(8).max(12).trim().required(),
+      });
+
+      const { value, error } = schema.validate(req.body);
+      if (error) {
+        return res.status(400).send({ errors: error.details });
+      }
+
+      const idUsuario = req.user.IDUsuario;
+
+      const result = await UsuarioService.atualizar(idUsuario, value);
+
+      return res.status(204).send({});
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send({ error: "Erro ao atualizar cadastro" });
+    }
+  },
 };

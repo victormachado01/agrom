@@ -2,7 +2,6 @@ const argon2 = require('argon2');
 const UsuarioModel = require('../models/usuario.model');
 
 class UsuarioService {
-
     async getByEmail(email) {
         const usuario = await UsuarioModel.query().findOne({ email });
 
@@ -16,6 +15,15 @@ class UsuarioService {
         const usuario = await UsuarioModel.query().insert(value);
 
         return usuario;
+    }
+
+    async atualizar(id, values) {
+        const result = await UsuarioModel
+            .query()
+            .findById(id)
+            .patch(values);
+
+        return result;
     }
 }
 

@@ -1,4 +1,5 @@
 @api = http://localhost:8080/api/v1/usuarios
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRFVzdWFyaW8iOjEsIm5vbWUiOiJEYXZpIiwiZW1haWwiOiJkYXZpQGdtYWlsLmNvbSIsImlhdCI6MTYwMjUxOTg4MCwiZXhwIjoxNjAyNzc5MDgwfQ._Nn1JGDXDaV2kFuxMTYU_GFPVP8Bh_xxkv24jqfbqZI
 
 
 ### 
@@ -27,4 +28,14 @@ Content-Type: application/json
 {
     "email": "davi@gmail.com",
     "senha": "123456"
+}
+
+###
+PATCH  {{api}}/me HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "nome": "Davi Dutra",
+    "telefone": "1440028922"
 }
