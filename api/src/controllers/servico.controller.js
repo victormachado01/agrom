@@ -45,7 +45,7 @@ module.exports = {
 
             const imgs = req.files;
 
-            if (!imgs.length) {
+            if (!imgs || imgs && !imgs.length) {
                 return res.status(400).send({ error: "Obrigatório pelo menos uma imagem" });
             } else if (imgs.length > 6) {
                 return res.status(400).send({ error: "Máximo de 6 imagens" });
