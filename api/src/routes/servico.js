@@ -18,9 +18,7 @@ router.get('/:IDServico([0-9]+)', async (req, res, next) => {
     return res.status(200).send({ ok: true });
 });
 router.patch('/:IDServico([0-9]+)', servico.atualizar);
-router.delete('/:IDServico([0-9]+)', async (req, res, next) => {
-    return res.status(200).send({ ok: true });
-});
+router.delete('/:IDServico([0-9]+)', servico.remover);
 
 
 module.exports = router;

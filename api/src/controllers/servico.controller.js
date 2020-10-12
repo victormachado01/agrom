@@ -132,4 +132,25 @@ module.exports = {
             return res.status(500).send({ error: "Erro ao atualizar serviço" });
         }
     },
+    remover: async (req, res, next) => {
+        try {
+            const idServico = parseInt(req.params.IDServico);
+            const idUsuario = req.user.IDUsuario;
+
+            const servico = await ServicoService.get(idServico);
+
+            if (!servico) {
+                return res.status(404).send({ errors: "Serviço não encontrado" });
+            } else if (servico.IDUsuario !== idUsuario) {
+                return res.status(403).send({});
+            }
+
+            const result = await ServicoService.remover(idServico);
+
+            return res.status(204).send({});
+        } catch (error) {
+            console.error(error);
+            return res.status(500).send({ error: "Erro ao remover serviço" });
+        }
+    },
 }

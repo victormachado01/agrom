@@ -43,12 +43,29 @@ class ServicoService {
     }
 
     async atualizar(id, values) {
-        const servico = await ServicoModel
+        const result = await ServicoModel
             .query()
             .findById(id)
             .patch(values);
 
-        return servico;
+        return result;
+    }
+
+    async remover(id) {
+        const result = await ImagemServicoModel.transaction(async tx => {
+            await ImagemServicoModel
+                .query(tx)
+                .delete()
+                .where({ IDServico: id });
+
+            const _result = await ServicoModel
+                .query(tx)
+                .deleteById(id);
+
+            return _result;
+        });
+
+        return result;
     }
 }
 
