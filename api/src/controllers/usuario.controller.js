@@ -38,7 +38,7 @@ module.exports = {
   cadastro: async (req, res, next) => {
     try {
       const schema = Joi.object({
-        nome: Joi.string().min(4).max(200).trim().required(),
+        nome: Joi.string().min(3).max(200).trim().required(),
         email: Joi.string().email().required(),
         senha: Joi.string().min(5).max(45).required(),
         confirmarSenha: Joi.string().valid(Joi.ref("senha")).required(),
