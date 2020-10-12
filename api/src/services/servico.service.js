@@ -1,7 +1,25 @@
 const ServicoModel = require('../models/servico.model');
 const ImagemServicoModel = require('../models/imagemServico.model');
+const { servico } = require('../config/multer');
 
 class ServicoService {
+    async get(id) {
+        const servico = await ServicoModel
+            .query()
+            .findById(id);
+
+        return servico;
+    }
+
+    async listar(page = 0, limit = 25) {
+        // TODO: Adicionar filtros
+        const servicos = await ServicoModel
+            .query()
+            .page(page, limit);
+
+        return servicos;
+    }
+
     async cadastro(servico, imagens) {
         const result = await ServicoModel.transaction(async tx => {
             const _servico = await ServicoModel
@@ -24,13 +42,13 @@ class ServicoService {
         return result;
     }
 
-    async listar(page = 0, limit = 25) {
-        // TODO: Adicionar filtros
-        const servicos = await ServicoModel
+    async atualizar(id, values) {
+        const servico = await ServicoModel
             .query()
-            .page(page, limit);
+            .findById(id)
+            .patch(values);
 
-        return servicos;
+        return servico;
     }
 }
 

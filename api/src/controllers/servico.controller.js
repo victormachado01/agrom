@@ -78,5 +78,58 @@ module.exports = {
             console.error(error);
             return res.status(500).send({ error: "Erro ao listar serviços" });
         }
-    }
+    },
+    atualizar: async (req, res, next) => {
+        try {
+            const schema = Joi.object({
+                nome: Joi.string()
+                    .min(4)
+                    .max(200)
+                    .trim(),
+                descricao: Joi.string()
+                    .min(4)
+                    .max(200)
+                    .trim(),
+                valor: Joi.number()
+                    .min(0),
+                contato: Joi.string()
+                    .min(8)
+                    .max(12)
+                    .trim(),
+                estado: Joi.string()
+                    .trim()
+                    .max(50),
+                cidade: Joi.string()
+                    .trim()
+                    .max(200),
+                IDCategoriaServico: Joi.number()
+                    .integer()
+            });
+
+            const { value, error } = schema.validate(req.body);
+            if (error) {
+                return res.status(400).send({ errors: error.details });
+            } else if (!Object.keys(value).length) {
+                return res.status(400).send({ error: "Verifique se os campos estão corretos" });
+            }
+
+            const idServico = parseInt(req.params.IDServico);
+            const idUsuario = req.user.IDUsuario;
+
+            const servico = await ServicoService.get(idServico);
+
+            if (!servico) {
+                return res.status(404).send({ errors: "Serviço não encontrado" });
+            } else if (servico.IDUsuario !== idUsuario) {
+                return res.status(403).send({});
+            }
+
+            const result = await ServicoService.atualizar(idServico, value);
+
+            return res.status(204).send({});
+        } catch (error) {
+            console.error(error);
+            return res.status(500).send({ error: "Erro ao atualizar serviço" });
+        }
+    },
 }

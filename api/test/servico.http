@@ -24,3 +24,17 @@ Content-Type: application/json
 }
 
 ###
+
+PATCH  {{api}}/18 HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "nome": "Terraplanagem",
+    "descricao": "4 anos de mercado",
+    "valor": 600,
+    "contato": "40028922",
+    "estado": "SP",
+    "cidade": "Ourinhos",
+    "IDCategoriaServico": 1
+}
