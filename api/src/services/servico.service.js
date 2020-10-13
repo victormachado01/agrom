@@ -11,6 +11,15 @@ class ServicoService {
         return servico;
     }
 
+    async getInfo(id) {
+        const servico = await ServicoModel
+            .query()
+            .findById(id)
+            .withGraphFetched('ImagemServico');
+
+        return servico;
+    }
+
     async listar(page = 0, limit = 25) {
         // TODO: Adicionar filtros
         const servicos = await ServicoModel

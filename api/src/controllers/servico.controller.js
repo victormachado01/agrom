@@ -1,6 +1,8 @@
 const Joi = require('joi');
 
 const ServicoService = require('../services/servico.service');
+const NotaServicoService = require('../services/notaServico.service');
+const { avaliar } = require('../services/notaServico.service');
 
 
 module.exports = {
@@ -79,6 +81,19 @@ module.exports = {
             return res.status(500).send({ error: "Erro ao listar serviços" });
         }
     },
+    infoServico: async (req, res, next) => {
+        try {
+            const idServico = parseInt(req.params.IDServico);
+
+            const servico = await ServicoService.getInfo(idServico);
+            console.log(servico)
+
+            return res.status(200).send({ servico });
+        } catch (error) {
+            console.error(error);
+            return res.status(500).send({ error: "Erro ao listar serviços" });
+        }
+    },
     atualizar: async (req, res, next) => {
         try {
             const schema = Joi.object({
@@ -130,6 +145,37 @@ module.exports = {
         } catch (error) {
             console.error(error);
             return res.status(500).send({ error: "Erro ao atualizar serviço" });
+        }
+    },
+    avaliar: async (req, res, next) => {
+        try {
+            const schema = Joi.object({
+                nota: Joi.number()
+                    .min(1)
+                    .max(5)
+                    .required()
+            });
+
+            const { value, error } = schema.validate(req.body);
+            if (error) {
+                return res.status(400).send({ errors: error.details });
+            }
+
+            const idServico = parseInt(req.params.IDServico);
+            const idUsuario = req.user.IDUsuario;
+
+            const avaliado = await NotaServicoService.get(idUsuario, idServico);
+
+            if (!avaliado) {
+                const result = await NotaServicoService.avaliar(idUsuario, idServico, value.nota);
+            } else {
+                const result = await NotaServicoService.atualizar(idUsuario, idServico, value.nota);
+            }
+
+            return res.status(204).send({});
+        } catch (error) {
+            console.error(error);
+            return res.status(500).send({ error: "Erro ao adicionar avaliação" });
         }
     },
     remover: async (req, res, next) => {

@@ -14,10 +14,9 @@ router.post(
     multer({ storage: multerStorage.servico }).array('imagens', 6),
     servico.cadastro
 );
-router.get('/:IDServico([0-9]+)', async (req, res, next) => {
-    return res.status(200).send({ ok: true });
-});
+router.get('/:IDServico([0-9]+)', servico.infoServico);
 router.patch('/:IDServico([0-9]+)', servico.atualizar);
+router.patch('/:IDServico([0-9]+)/notas', servico.avaliar);
 router.delete('/:IDServico([0-9]+)', servico.remover);
 
 

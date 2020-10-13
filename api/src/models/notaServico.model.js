@@ -1,8 +1,8 @@
 const Model = require('../config/objection');
 
-class ComentarioServicoModel extends Model {
+class NotaServicoModel extends Model {
   static get tableName() {
-    return 'ComentarioServico';
+    return 'NotaServico';
   }
 
   static get idColumn() {
@@ -10,4 +10,4 @@ class ComentarioServicoModel extends Model {
   }
 }
 
-module.exports = ComentarioServicoModel;
+module.exports = NotaServicoModel;

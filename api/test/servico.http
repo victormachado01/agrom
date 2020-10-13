@@ -25,6 +25,22 @@ Content-Type: application/json
 
 ###
 
+GET {{api}}/16 HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+PATCH {{api}}/14/notas HTTP/1.1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "nota": 5
+}
+
+###
+
 PATCH  {{api}}/14 HTTP/1.1
 Authorization: Bearer {{token}}
 Content-Type: application/json
