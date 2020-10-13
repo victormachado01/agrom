@@ -15,6 +15,7 @@ class ServicoService {
         // TODO: Adicionar filtros
         const servicos = await ServicoModel
             .query()
+            .withGraphFetched('ImagemServico')
             .page(page, limit);
 
         return servicos;
