@@ -1,5 +1,6 @@
 const ServicoModel = require('../models/servico.model');
 const ImagemServicoModel = require('../models/imagemServico.model');
+const NotaServicoModel = require('../models/notaServico.model');
 const { servico } = require('../config/multer');
 
 class ServicoService {
@@ -15,7 +16,19 @@ class ServicoService {
         const servico = await ServicoModel
             .query()
             .findById(id)
-            .withGraphFetched('ImagemServico');
+            .withGraphFetched('ImagemServico as imagens');
+
+        const _avaliacao = await NotaServicoModel
+            .query()
+            .where({
+                IDServico: id
+            })
+            .count('IDServico as avaliacoes')
+            .avg('nota as nota');
+
+        const avaliacao = _avaliacao[0];
+        avaliacao.nota = avaliacao.nota ? parseInt(avaliacao.nota) : 0;
+        servico.avaliacao = avaliacao
 
         return servico;
     }
@@ -24,7 +37,7 @@ class ServicoService {
         // TODO: Adicionar filtros
         const servicos = await ServicoModel
             .query()
-            .withGraphFetched('ImagemServico')
+            .withGraphFetched('ImagemServico as imagens')
             .page(page, limit);
 
         return servicos;

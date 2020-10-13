@@ -86,7 +86,6 @@ module.exports = {
             const idServico = parseInt(req.params.IDServico);
 
             const servico = await ServicoService.getInfo(idServico);
-            console.log(servico)
 
             return res.status(200).send({ servico });
         } catch (error) {

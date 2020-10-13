@@ -1,5 +1,5 @@
 @api = http://localhost:8080/api/v1/servicos
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRFVzdWFyaW8iOjEsIm5vbWUiOiJEYXZpIiwiZW1haWwiOiJkYXZpQGdtYWlsLmNvbSIsImlhdCI6MTYwMjUxOTg4MCwiZXhwIjoxNjAyNzc5MDgwfQ._Nn1JGDXDaV2kFuxMTYU_GFPVP8Bh_xxkv24jqfbqZI
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRFVzdWFyaW8iOjQsIm5vbWUiOiJndWlzIiwiZW1haWwiOiJndWlAZ21haWwuY29tIiwiaWF0IjoxNjAyNTUyODk2LCJleHAiOjE2MDI4MTIwOTZ9.P9XBSPfryXcUKDJahGm-AkcLpFkBGjsS1HvjUvVIfjE
 
 
 GET {{api}}?page=0
@@ -31,7 +31,7 @@ Content-Type: application/json
 
 ###
 
-PATCH {{api}}/14/notas HTTP/1.1
+PATCH {{api}}/16/notas HTTP/1.1
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
