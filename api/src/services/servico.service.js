@@ -12,6 +12,15 @@ class ServicoService {
         return servico;
     }
 
+    async getByUser(IDUsuario) {
+        const servicos = await ServicoModel
+            .query()
+            .where({ IDUsuario })
+            .withGraphFetched('ImagemServico as imagens')
+
+        return servicos;
+    }
+
     async getInfo(id) {
         const servico = await ServicoModel
             .query()

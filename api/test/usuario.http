@@ -1,5 +1,5 @@
 @api = http://localhost:8080/api/v1/usuarios
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRFVzdWFyaW8iOjEsIm5vbWUiOiJEYXZpIiwiZW1haWwiOiJkYXZpQGdtYWlsLmNvbSIsImlhdCI6MTYwMjUxOTg4MCwiZXhwIjoxNjAyNzc5MDgwfQ._Nn1JGDXDaV2kFuxMTYU_GFPVP8Bh_xxkv24jqfbqZI
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRFVzdWFyaW8iOjEsIm5vbWUiOiJEYXZpIER1dHJhIiwiZW1haWwiOiJkYXZpQGdtYWlsLmNvbSIsImlhdCI6MTYwMjgxMTg0OCwiZXhwIjoxNjAzMDcxMDQ4fQ.UC8DaxgVEc5muSS9JxF1nMEo3r48QU9YREEnDOCEOug
 
 
 ### 
@@ -31,7 +31,11 @@ Content-Type: application/json
 }
 
 ###
-PATCH  {{api}}/me HTTP/1.1
+GET {{api}}/me HTTP/1.1
+Authorization: Bearer {{token}}
+
+###
+PATCH {{api}}/me HTTP/1.1
 Authorization: Bearer {{token}}
 Content-Type: application/json
 

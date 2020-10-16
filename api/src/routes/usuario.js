@@ -9,9 +9,7 @@ router.post('/login', usuario.login);
 router.get(
     '/me',
     auth.required,
-    async (req, res, next) => {
-        return res.status(200).send({ ok: true });
-    }
+    usuario.perfil
 );
 router.patch(
     '/me',
