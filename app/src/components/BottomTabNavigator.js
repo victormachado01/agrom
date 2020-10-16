@@ -1,10 +1,10 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/Entypo';
 
 import HomeStack from '../stack/HomeStack';
 import AddPubStack from '../stack/AddPubStack';
 import Profile from '../stack/ProfileStack';
-import LoginStack from '../stack/LoginStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,9 +14,15 @@ const BottomTabNavigator = () => {
       tabBarOptions={{
         activeTintColor: '#2AA62A',
       }}>
-      {/* <Tab.Screen name="Login" component={LoginStack} /> */}
       <Tab.Screen name="Início" component={HomeStack} />
-      <Tab.Screen name="Publicar" component={AddPubStack} />
+      <Tab.Screen
+        name="Publicar"
+        component={AddPubStack}
+        options={{
+          title: "",
+          tabBarIcon: () => <Icon name="plus" size={40} color="#000" />
+        }}
+      />
       <Tab.Screen name="Perfil" component={Profile} />
     </Tab.Navigator>
   );

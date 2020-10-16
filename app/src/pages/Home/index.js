@@ -1,12 +1,19 @@
-import React from 'react';
-import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
-import {useAuth} from '../../contexts/Auth';
+import React, {useEffect, useState} from 'react';
+import {View, Text, ScrollView} from 'react-native';
+
+import api from '../../services/api';
 
 import Styles from './Styles';
 import Card from '../../components/Card';
 
 const Home = () => {
-  const {signOut} = useAuth();
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    api.get('/servicos?page=0').then((res) => {
+      setCards(res.data.servicos);
+    });
+  }, []);
 
   return (
     <ScrollView>
@@ -16,17 +23,9 @@ const Home = () => {
           <Text>Pesquisar</Text>
         </View>
         <View style={Styles.Container}>
-          <TouchableOpacity onPress={() => signOut()}>
-            <Text>Sair</Text>
-          </TouchableOpacity>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {cards.map((card) => (
+            <Card key={card.IDServico} info={card} />
+          ))}
         </View>
       </View>
     </ScrollView>

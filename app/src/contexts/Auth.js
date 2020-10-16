@@ -26,8 +26,13 @@ const AuthProvider = ({children}) => {
     await AsyncStorage.clear();
     setToken(false);
   }
+
+  async function getToken() {
+    return token;
+  }
+
   return (
-    <AuthContext.Provider value={{signed: !!token, signIn, signOut}}>
+    <AuthContext.Provider value={{signed: !!token, signIn, signOut, getToken}}>
       {children}
     </AuthContext.Provider>
   );
