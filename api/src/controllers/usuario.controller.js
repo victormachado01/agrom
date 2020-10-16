@@ -2,6 +2,7 @@ const Joi = require("joi");
 const argon2 = require("argon2");
 
 const UsuarioService = require("../services/usuario.service");
+const ServicoService = require('../services/servico.service');
 const tokenHelper = require("../helpers/token");
 
 module.exports = {
@@ -65,6 +66,20 @@ module.exports = {
     } catch (error) {
       console.error(error);
       return res.status(500).send({ error: "Erro ao cadastrar usuário" });
+    }
+  },
+  perfil: async (req, res, next) => {
+    try {
+      const idUsuario = req.user.IDUsuario;
+
+      const usuario = await UsuarioService.getById(idUsuario);
+      delete usuario.senha;
+      const servicos = await ServicoService.getByUser(idUsuario);
+
+      return res.status(200).send({ usuario, servicos });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send({ error: "Erro ao carregar perfil" });
     }
   },
   atualizar: async (req, res, next) => {

@@ -2,6 +2,12 @@ const argon2 = require('argon2');
 const UsuarioModel = require('../models/usuario.model');
 
 class UsuarioService {
+    async getById(id) {
+        const usuario = await UsuarioModel.query().findById(id);
+
+        return usuario;
+    }
+
     async getByEmail(email) {
         const usuario = await UsuarioModel.query().findOne({ email });
 
