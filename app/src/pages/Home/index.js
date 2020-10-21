@@ -1,19 +1,29 @@
+/* eslint-disable import/extensions */
+/* eslint-disable prettier/prettier */
 import React, {useEffect, useState} from 'react';
 import {View, Text, ScrollView} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 import api from '../../services/api';
+// eslint-disable-next-line import/no-unresolved
+
 
 import Styles from './Styles';
 import Card from '../../components/Card';
 
 const Home = () => {
   const [cards, setCards] = useState([]);
+  const navigation = useNavigation();
 
   useEffect(() => {
-    api.get('/servicos?page=0').then((res) => {
-      setCards(res.data.servicos);
+    navigation.addListener('focus', () => {
+      api
+        .get('/servicos?page=0')
+        .then((res) => {
+          setCards(res.data.servicos);
+        });
     });
-  }, []);
+  }, [navigation]);
 
   return (
     <ScrollView>

@@ -21,17 +21,21 @@ export default StyleSheet.create({
   },
   Info: {
     height: 55,
+    paddingLeft: 10,
     justifyContent: 'space-evenly',
-    // alignItems: 'center',
   },
   InfoText: {
     fontSize: 16,
     fontWeight: '700',
     color: '#333333',
-    marginRight: 15,
   },
   InfoTextSecondary: {
     fontSize: 14,
     color: '#2aa62a',
+  },
+  TextGreen: {
+    paddingRight: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });

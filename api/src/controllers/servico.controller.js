@@ -45,22 +45,23 @@ module.exports = {
                 return res.status(400).send({ errors: error.details });
             }
 
-            const imgs = req.files;
+            // const imgs = req.files;
 
-            if (!imgs || imgs && !imgs.length) {
-                return res.status(400).send({ error: "Obrigatório pelo menos uma imagem" });
-            } else if (imgs.length > 6) {
-                return res.status(400).send({ error: "Máximo de 6 imagens" });
-            }
+            // if (!imgs || imgs && !imgs.length) {
+            //     return res.status(400).send({ error: "Obrigatório pelo menos uma imagem" });
+            // } else if (imgs.length > 6) {
+            //     return res.status(400).send({ error: "Máximo de 6 imagens" });
+            // }
 
-            const extensaoInvalida = imgs.filter(img => !img.mimetype.startsWith('image/'));
+            // const extensaoInvalida = imgs.filter(img => !img.mimetype.startsWith('image/'));
 
-            if (extensaoInvalida.length)
-                return res.status(400).send({ error: "Permitido somente imagens" });
+            // if (extensaoInvalida.length)
+            //     return res.status(400).send({ error: "Permitido somente imagens" });
 
             value.IDUsuario = req.user.IDUsuario;
 
-            const servico = await ServicoService.cadastro(value, imgs);
+            // const servico = await ServicoService.cadastro(value, imgs);
+            const servico = await ServicoService.cadastro(value);
 
             return res.status(201).send({ servico });
         } catch (error) {

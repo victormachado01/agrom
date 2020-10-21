@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-use-before-define */
@@ -17,6 +18,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 
 import api from '../../services/api';
+import {login} from '../../services/auth';
 import {useAuth} from '../../contexts/Auth';
 
 import Styles from './Styles';
@@ -24,6 +26,7 @@ import Styles from './Styles';
 const Login = ({navigation}) => {
   const [senha, setSenha] = useState('');
   const [email, setEmail] = useState('');
+
   const {signIn} = useAuth();
 
   const [offset] = useState(new Animated.ValueXY({x: 0, y: 80}));
@@ -36,8 +39,8 @@ const Login = ({navigation}) => {
       .post(`/usuarios/login`, {email, senha})
       .then((response) => {
         const {data} = response;
-        console.log(data);
         if (data.token) {
+          login(data.token);
           signIn(data.token);
         }
       })

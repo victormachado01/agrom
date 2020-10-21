@@ -28,6 +28,7 @@ const AuthProvider = ({children}) => {
   }
 
   async function getToken() {
+    console.log('TOKEN', token)
     return token;
   }
 

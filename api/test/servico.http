@@ -1,5 +1,5 @@
 @api = http://localhost:8080/api/v1/servicos
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRFVzdWFyaW8iOjQsIm5vbWUiOiJndWlzIiwiZW1haWwiOiJndWlAZ21haWwuY29tIiwiaWF0IjoxNjAyNTUyODk2LCJleHAiOjE2MDI4MTIwOTZ9.P9XBSPfryXcUKDJahGm-AkcLpFkBGjsS1HvjUvVIfjE
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRFVzdWFyaW8iOjgsIm5vbWUiOiJjZWJvbGEiLCJlbWFpbCI6ImNlYm9sYUBlbWFpbC5jb20iLCJpYXQiOjE2MDMyMzI4NjgsImV4cCI6MTYwNTgyNDg2OH0.u3pROJI3YQ0WHiqARzNhBlx-y8HvSCizpW1xHFRTm-U
 
 
 GET {{api}}?page=0
@@ -14,18 +14,18 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-    "nome": "Terraplanagem",
-    "descricao": "3 anos de mercado",
+    "nome": "Capino Terrenos",
+    "descricao": "Faco trabalho de capinar terrenos em geral",
     "valor": 500,
-    "contato": "40028922",
+    "contato": "998980808",
     "estado": "SP",
-    "cidade": "Ourinhos",
+    "cidade": "Pompeia",
     "IDCategoriaServico": 1
 }
 
 ###
 
-GET {{api}}/16 HTTP/1.1
+GET {{api}}/7 HTTP/1.1
 Authorization: Bearer {{token}}
 Content-Type: application/json
 

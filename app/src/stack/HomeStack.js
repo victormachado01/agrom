@@ -3,9 +3,6 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import Home from '../pages/Home';
 import Publication from '../pages/Publication';
-// import AddPub from '../pages/AddPub';
-
-// import { Container } from './styles';
 
 const Stack = createStackNavigator();
 
