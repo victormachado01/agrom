@@ -4,7 +4,7 @@ export default StyleSheet.create({
   Background: {
     width: '100%',
     height: '100%',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
   },
 
@@ -12,7 +12,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 50,
+    padding: 35,
   },
   LogoText: {
     fontSize: 35,
@@ -38,19 +38,18 @@ export default StyleSheet.create({
   Button: {
     width: '80%',
     height: 50,
-    backgroundColor: '#FF860D',
+    margin: 30,
     borderRadius: 7,
-    margin: 20,
-    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#FF860D',
   },
   TextBtn: {
     fontSize: 25,
     color: '#fff',
   },
   CadOK: {
-    fontSize: 16,
+    fontSize: 19,
     color: '#fff',
   },
 });

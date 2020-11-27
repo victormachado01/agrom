@@ -7,11 +7,15 @@ export default StyleSheet.create({
   Container: {
     height: '100%',
     width: '100%',
+    // backgroundColor: '#A8AFB9',
   },
   Header: {
     height: '40%',
     padding: 15,
-    backgroundColor: '#c58f5c',
+    backgroundColor: '#A8AFB9',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 0,
   },
   Content: {
     bottom: 0,
@@ -45,5 +49,18 @@ export default StyleSheet.create({
     marginLeft: 26,
     marginBottom: 10,
     color: SecondColor,
+  },
+  Icone: {
+    position: 'absolute',
+    top: 15,
+    left: 15,
+    zIndex: 1,
+    backgroundColor: 'rgba(255, 255, 255, 0.4)',
+    borderRadius: 5,
+    width: 35,
+    height: 35,
+
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

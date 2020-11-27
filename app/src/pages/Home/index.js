@@ -30,7 +30,7 @@ const Home = () => {
       <View style={Styles.Background}>
         <View style={Styles.Header}>
           <Text style={Styles.Text}>Início</Text>
-          <Text>Pesquisar</Text>
+          {/* <Text>Pesquisar</Text> */}
         </View>
         <View style={Styles.Container}>
           {cards.map((card) => (

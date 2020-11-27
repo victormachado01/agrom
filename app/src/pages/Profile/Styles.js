@@ -22,15 +22,26 @@ export default StyleSheet.create({
     fontSize: 35,
     color: '#595959',
     lineHeight: 70,
+    fontWeight: '700',
   },
   Contact: {
-    fontSize: 20,
+    fontSize: 23,
     color: '#595959',
-    lineHeight: 40,
+    lineHeight: 60,
   },
   Exit: {
-    marginTop: 70,
-    fontSize: 20,
+    marginTop: 100,
+    fontSize: 25,
     color: '#ff860d',
+    fontWeight: '700',
+  },
+
+  Round: {
+    width: 200,
+    height: 200,
+    borderRadius: 100,
+    backgroundColor: '#C4C4C4',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import {Text, View, SafeAreaView, Pressable} from 'react-native';
+import {Text, View, SafeAreaView, Pressable, Image} from 'react-native';
 import {useRoute, useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Entypo';
 import Icons from 'react-native-vector-icons/FontAwesome';
@@ -12,13 +12,17 @@ const Publication = () => {
   const route = useRoute();
   const {card} = route.params;
   const navigation = useNavigation();
+
+  const imagePath = card.imagens[0].path;
   return (
     <SafeAreaView style={Styles.Container}>
-      <View style={Styles.Header}>
-        <Pressable onPress={() => navigation.goBack()}>
-          <Icon name="chevron-thin-left" size={20} color="#000" />
-        </Pressable>
-      </View>
+      <Pressable onPress={() => navigation.goBack()} style={Styles.Icone}>
+        <Icon name="chevron-thin-left" size={30} color="#000" />
+      </Pressable>
+      <Image
+          style={Styles.Header}
+          source={{uri: `file://${imagePath}`}}
+        />
       <Text style={Styles.Title}> {card.nome} </Text>
       <View style={Styles.Content}>
         <Text style={Styles.Desc}>{card.descricao}</Text>

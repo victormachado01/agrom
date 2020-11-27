@@ -58,15 +58,15 @@ class ServicoService {
                 .query(tx)
                 .insert(servico);
 
-            // const _imagens = imagens.map(img => {
-            //     return ImagemServicoModel
-            //         .query(tx)
-            //         .insert({ path: img.path, IDServico: _servico.IDServico });
-            // });
+            const _imagens = imagens.map(img => {
+                return ImagemServicoModel
+                    .query(tx)
+                    .insert({ path: img.path, IDServico: _servico.IDServico });
+            });
 
-            // const imgs = await Promise.all([..._imagens]);
+            const imgs = await Promise.all([..._imagens]);
 
-            // _servico.imagens = imgs;
+            _servico.imagens = imgs;
 
             return _servico;
         })

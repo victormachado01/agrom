@@ -17,6 +17,8 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 import api from '../../services/api';
 import {login} from '../../services/auth';
 import {useAuth} from '../../contexts/Auth';
@@ -125,26 +127,32 @@ const Login = ({navigation}) => {
               opacity,
             },
           ]}>
-          <TextInput
-            style={Styles.Input}
-            placeholder="Email"
-            keyboardType="email-address"
-            underlineColorAndroid="transparent"
-            placeholderTextColor="#fff"
-            autoCorrect={false}
-            value={email}
-            onChangeText={(text) => setEmail(text)}
-          />
-          <TextInput
-            style={Styles.Input}
-            secureTextEntry
-            placeholder="Senha"
-            keyboardType="default"
-            placeholderTextColor="#fff"
-            autoCorrect={false}
-            value={senha}
-            onChangeText={(text) => setSenha(text)}
-          />
+          <View style={Styles.InputContainer}>
+            <Ionicons name="ios-person-outline" size={27} color="#fff" />
+            <TextInput
+              style={Styles.Input}
+              placeholder="Email"
+              keyboardType="email-address"
+              underlineColorAndroid="transparent"
+              placeholderTextColor="#fff"
+              autoCorrect={false}
+              value={email}
+              onChangeText={(text) => setEmail(text)}
+            />
+          </View>
+          <View style={Styles.InputContainer}>
+            <Ionicons name="ios-lock-open-outline" size={25} color="#fff" />
+            <TextInput
+              style={Styles.Input}
+              secureTextEntry
+              placeholder="Senha"
+              keyboardType="default"
+              placeholderTextColor="#fff"
+              autoCorrect={false}
+              value={senha}
+              onChangeText={(text) => setSenha(text)}
+            />
+          </View>
           <TouchableOpacity style={Styles.Button} onPress={() => handleLogin()}>
             <Text style={Styles.TextBtn}>Entrar</Text>
           </TouchableOpacity>

@@ -11,7 +11,7 @@ router.use(auth.required);
 router.get('/', servico.listar);
 router.post(
     '/',
-    multer({ storage: multerStorage.servico }).array('imagens', 6),
+    // multer({ storage: multerStorage.servico }).array('imagens', 6),
     servico.cadastro
 );
 router.get('/:IDServico([0-9]+)', servico.infoServico);

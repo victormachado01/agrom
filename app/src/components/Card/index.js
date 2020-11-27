@@ -5,13 +5,17 @@ import React from 'react';
 import {Text, Image, View, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Entypo';
+
 import tractor from '../../assets/tractor.png';
 
 import Styles from './Styles';
 
 const Card = (props) => {
   const navigation = useNavigation();
-  const {nome, cidade} = props.info;
+  const {nome, cidade, imagens} = props.info;
+
+  const imagePath = imagens.length ? `file://${imagens[0].path}` : tractor;
+
   return (
     <View>
       <View style={Styles.Container}>
@@ -22,7 +26,7 @@ const Card = (props) => {
             card: props.info
         })}>
           <View>
-            <Image source={tractor} style={{width: 150, height: 120}} />
+            <Image source={{uri: imagePath}} style={{width: 150, height: 120}} />
           </View>
           <View style={Styles.Info}>
             <Text style={Styles.InfoText}>{nome}</Text>

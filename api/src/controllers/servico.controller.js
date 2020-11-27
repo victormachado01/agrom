@@ -30,18 +30,22 @@ module.exports = {
                 estado: Joi.string()
                     .trim()
                     .max(50)
-                    .required(),
+                    .default('sp'),
                 cidade: Joi.string()
                     .trim()
                     .max(200)
                     .required(),
                 IDCategoriaServico: Joi.number()
                     .integer()
-                    .required()
+                    .default(1),
+                imagens: Joi.string()
+                    .trim()
+                    .default('/storage/emulated/0/DCIM/Camera/IMG_20201020_233619.jpg')
             });
 
             const { value, error } = schema.validate(req.body);
             if (error) {
+                console.log(error.details);
                 return res.status(400).send({ errors: error.details });
             }
 
@@ -57,11 +61,12 @@ module.exports = {
 
             // if (extensaoInvalida.length)
             //     return res.status(400).send({ error: "Permitido somente imagens" });
-
+            const imgs = [{path: value.imagens}]
+            delete value.imagens;
             value.IDUsuario = req.user.IDUsuario;
 
-            // const servico = await ServicoService.cadastro(value, imgs);
-            const servico = await ServicoService.cadastro(value);
+            const servico = await ServicoService.cadastro(value, imgs);
+            // const servico = await ServicoService.cadastro(value);
 
             return res.status(201).send({ servico });
         } catch (error) {
@@ -76,11 +81,13 @@ module.exports = {
 
             const servicos = await ServicoService.listar(page, limit);
 
+            console.log(servicos);
             return res.status(200).send({ servicos: servicos.results, total: servicos.total, page, limit });
         } catch (error) {
             console.error(error);
             return res.status(500).send({ error: "Erro ao listar serviços" });
         }
+
     },
     infoServico: async (req, res, next) => {
         try {
